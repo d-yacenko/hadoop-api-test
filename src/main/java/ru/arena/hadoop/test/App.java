@@ -64,8 +64,7 @@ public class App {
 		conf.addResource(new Path("hdfs-site.xml"));
 		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
 		conf.set("fs.default.name", "hdfs://176.118.164.173:8020");
-		conf.set("hadoop.job.ugi", "d.yacenko");
-		String dirName = "/user/d.yacenko/testdir";
+		String dirName = "/tmp/testdir";
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
 		FileSystem fileSystem = FileSystem.get(conf);
