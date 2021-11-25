@@ -7,13 +7,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hdfs.client.HdfsDataOutputStream;
+
+
+
 
 
 /**
@@ -60,8 +62,9 @@ public class App {
 
 		conf.addResource(new Path("core-site.xml"));
 		conf.addResource(new Path("hdfs-site.xml"));
-//		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
+		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
 		conf.set("fs.default.name", "hdfs://176.118.164.173:8020");
+		conf.set("hadoop.job.ugi", "d.yacenko");
 		String dirName = "/user/d.yacenko/testdir";
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name

@@ -66,9 +66,10 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<addClasspath>true</addClasspath>
+									<!--addClasspath>true</addClasspath -->
 									<mainClass>ru.arena.hadoop.test.App</mainClass>
 								</manifest>
+								<!--manifestEntries> <Class-Path>./lib/</Class-Path> </manifestEntries -->
 							</archive>
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
