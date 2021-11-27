@@ -37,9 +37,8 @@ public class App {
 
 	public static void writeFileToHDFS(FileSystem fileSystem, String dirName, String fileName) throws IOException {
 		Path file = new Path(dirName + "/" + fileName);
-		if (fileSystem.exists(file)) {
+		if (fileSystem.exists(file)) 
 			fileSystem.delete(file, true);
-		}
 		OutputStream os = fileSystem.create(file, new Progressable() {
 
 			public void progress() {
@@ -91,6 +90,7 @@ public class App {
 		System.out.println("Подключились к: " + fileSystem.getUri());
 		createFolderOnHDFS(fileSystem, dirName);
 		writeFileToHDFS(fileSystem, dirName, "test.txt");
+		writeFileToHDFS(fileSystem, dirName, "test1.txt");
 //		readFileFromHDFS(fileSystem, dirName, "test.txt");
 		fileSystem.close();
 	}
