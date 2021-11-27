@@ -50,14 +50,15 @@ public class App {
 			}
 		});
 		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-
 		br.write("Hello World");
 		br.close();
 		fileSystem.close();
+		System.out.println();
 	}
 
 
 	public static void readFileFromHDFS(Configuration conf, String dirName, String fileName) throws IOException {
+		System.out.print("Read test file:");
 		FileSystem fileSystem = FileSystem.get(conf);
 		Path hdfsReadPath = new Path(dirName + "/" + fileName);
 		FSDataInputStream inputStream = fileSystem.open(hdfsReadPath);
@@ -69,6 +70,7 @@ public class App {
 		bufferedReader.close();
 		inputStream.close();
 		fileSystem.close();
+		System.out.println();
 	}
 
 	public static void main(String[] args) throws IOException {
