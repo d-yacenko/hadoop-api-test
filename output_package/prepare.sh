@@ -5,7 +5,7 @@ rm -rf lib/ conf/ test-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 cd ..
 git add .
 git commit -m "--"
-DISPLAY= git push -f origin main
+#DISPLAY= git push -f origin main
 cd -
 
 
