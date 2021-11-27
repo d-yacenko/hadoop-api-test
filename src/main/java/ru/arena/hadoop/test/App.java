@@ -90,7 +90,7 @@ public class App {
 		System.out.println("Подключились к: " + fileSystem.getUri());
 		createFolderOnHDFS(fileSystem, dirName);
 		writeFileToHDFS(fileSystem, dirName, "test.txt");
-		writeFileToHDFS(fileSystem, dirName, "test1.txt");
+		writeFileToHDFS1(fileSystem, dirName, "test1.txt");
 //		readFileFromHDFS(fileSystem, dirName, "test.txt");
 		fileSystem.close();
 	}
