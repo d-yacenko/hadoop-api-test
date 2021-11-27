@@ -25,7 +25,9 @@ import org.apache.hadoop.util.Progressable;
  *
  */
 public class App {
-	public static void createFolderOnHDFS(FileSystem fileSystem, String dirName) throws IOException {
+	public static void createFolderOnHDFS(Configuration conf, String dirName) throws IOException {
+		FileSystem fileSystem = FileSystem.get(conf);
+		System.out.println("Подключились к:  " + fileSystem.getUri());
 		Path path = new Path(dirName);
 		if (fileSystem.exists(path)) {
 			System.out.println("Dir " + dirName + " already exists");
@@ -33,9 +35,11 @@ public class App {
 			boolean rez = fileSystem.mkdirs(path);
 			System.out.println(rez);
 		}
+		fileSystem.close();
 	}
 
-	public static void writeFileToHDFS(FileSystem fileSystem, String dirName, String fileName) throws IOException {
+	public static void writeFileToHDFS(Configuration conf, String dirName, String fileName) throws IOException {
+		FileSystem fileSystem = FileSystem.get(conf);
 		Path file = new Path(dirName + "/" + fileName);
 		if (fileSystem.exists(file)) 
 			fileSystem.delete(file, true);
@@ -49,21 +53,12 @@ public class App {
 
 		br.write("Hello World");
 		br.close();
+		fileSystem.close();
 	}
 
-	public static void writeFileToHDFS1(FileSystem fileSystem, String dirName, String fileName) throws IOException {
-		Path hdfsWritePath = new Path(dirName + "/" + fileName);
-		FSDataOutputStream fsDataOutputStream = fileSystem.create(hdfsWritePath, true);
-		BufferedWriter bufferedWriter = new BufferedWriter(
-				new OutputStreamWriter(fsDataOutputStream, StandardCharsets.UTF_8));
-		bufferedWriter.write("Java API to write data in HDFS");
-		bufferedWriter.newLine();
-		((HdfsDataOutputStream) fsDataOutputStream).hflush();
-//		//((HdfsDataOutputStream) fsDataOutputStream).hsync(EnumSet.of(SyncFlag.UPDATE_LENGTH));
-		fsDataOutputStream.close();
-	}
 
-	public static void readFileFromHDFS(FileSystem fileSystem, String dirName, String fileName) throws IOException {
+	public static void readFileFromHDFS(Configuration conf, String dirName, String fileName) throws IOException {
+		FileSystem fileSystem = FileSystem.get(conf);
 		Path hdfsReadPath = new Path(dirName + "/" + fileName);
 		FSDataInputStream inputStream = fileSystem.open(hdfsReadPath);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
@@ -73,6 +68,7 @@ public class App {
 		}
 		bufferedReader.close();
 		inputStream.close();
+		fileSystem.close();
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -86,12 +82,8 @@ public class App {
 		String dirName = "/tmp/testdir";
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
-		FileSystem fileSystem = FileSystem.get(conf);
-		System.out.println("Подключились к: " + fileSystem.getUri());
-		createFolderOnHDFS(fileSystem, dirName);
-		writeFileToHDFS(fileSystem, dirName, "test.txt");
-		writeFileToHDFS1(fileSystem, dirName, "test1.txt");
-//		readFileFromHDFS(fileSystem, dirName, "test.txt");
-		fileSystem.close();
+		createFolderOnHDFS(conf, dirName);
+		writeFileToHDFS(conf, dirName, "test.txt");
+		readFileFromHDFS(conf, dirName, "test.txt");
 	}
 }
