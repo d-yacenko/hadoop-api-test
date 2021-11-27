@@ -62,8 +62,10 @@ public class App {
 
 		conf.addResource(new Path("core-site.xml"));
 		conf.addResource(new Path("hdfs-site.xml"));
-		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
-		conf.set("fs.default.name", "hdfs://176.118.164.173:8020");
+//		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
+//		conf.set("fs.default.name", "hdfs://176.118.164.173:8020");
+		conf.set("fs.defaultFS", "hdfs://192.168.2.2:8020");
+		conf.set("fs.default.name", "hdfs://192.168.2.2:8020");
 		String dirName = "/tmp/testdir";
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
