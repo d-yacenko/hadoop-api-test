@@ -45,7 +45,7 @@ public class App {
 
         // set kerberos host and realm
         System.setProperty("java.security.krb5.realm", "ARENA.RU");
-        System.setProperty("java.security.krb5.kdc", "192.168.33.10");
+        System.setProperty("java.security.krb5.kdc", "192.168.2.10");
 
         Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
