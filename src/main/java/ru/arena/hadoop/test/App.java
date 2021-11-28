@@ -63,7 +63,7 @@ public class App {
 
         // server principal
         // the kerberos principle that the namenode is using
-        conf.set("dfs.namenode.kerberos.principal.pattern", "hdfs/*@ARENA.RU");
+        conf.set("dfs.namenode.kerberos.principal.pattern", "hdfs-namenode/*@ARENA.RU");
         UserGroupInformation.setConfiguration(conf);
         UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "conf/team0.keytab");
 
