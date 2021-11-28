@@ -48,6 +48,8 @@ public class App {
         System.setProperty("java.security.krb5.kdc", "192.168.33.10");
 
         Configuration conf = new Configuration();
+		conf.addResource(new Path("conf/core-site.xml"));
+		conf.addResource(new Path("conf/hdfs-site.xml"));
 
         conf.set("hadoop.security.authentication", "kerberos");
         conf.set("hadoop.security.authorization", "true");
@@ -117,8 +119,13 @@ public class App {
 		String dirName = "/tmp/testdir"; 
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
-		createFolderOnHDFS(conf, dirName);
-		writeFileToHDFS(conf, dirName, "test.txt");
-		readFileFromHDFS(conf, dirName, "test.txt");
+		 
+		// sample work with SIMPLE authentication 
+//		createFolderOnHDFS(conf, dirName);
+//		writeFileToHDFS(conf, dirName, "test.txt");
+//		readFileFromHDFS(conf, dirName, "test.txt");
+		
+		// sample work with kerberos
+		writeFileToKrbHFDS();
 	}
 }
