@@ -68,6 +68,7 @@ public class App {
         UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "conf/team0.keytab");
 
         FileSystem fs = FileSystem.get(conf);
+        System.out.println("Подключились к:  " + fs.getUri());
         RemoteIterator<LocatedFileStatus> files = fs.listFiles(new Path("./"), true);
         while(files.hasNext()) {
             LocatedFileStatus file = files.next();
