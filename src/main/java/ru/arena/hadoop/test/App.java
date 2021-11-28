@@ -44,7 +44,7 @@ public class App {
 	}
 	
 	public static void writeFileToKrbHFDS() throws IOException {
-
+		System.out.println("Connect to ADH...");
         // set kerberos host and realm
         System.setProperty("java.security.krb5.realm", "ARENA.RU");
         System.setProperty("java.security.krb5.kdc", "192.168.2.10");
