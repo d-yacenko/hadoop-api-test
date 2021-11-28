@@ -39,7 +39,7 @@
         </property>
         <property>
                 <name>dfs.block.access.token.enable</name>
-                <value>False</value>
+                <value>True</value>
         </property>
         <property>
                 <name>dfs.blocksize</name>
@@ -71,11 +71,11 @@
         </property>
         <property>
                 <name>dfs.data.transfer.protection</name>
-                <value></value>
+                <value>authentication,privacy</value>
         </property>
         <property>
                 <name>dfs.datanode.address</name>
-                <value>0.0.0.0:9866</value>
+                <value>0.0.0.0:1019</value>
         </property>
         <property>
                 <name>dfs.datanode.balance.max.concurrent.moves</name>
@@ -91,23 +91,23 @@
         </property>
         <property>
                 <name>dfs.datanode.http.address</name>
-                <value>0.0.0.0:9864</value>
+                <value>0.0.0.0:1022</value>
         </property>
         <property>
                 <name>dfs.datanode.https.address</name>
-                <value>0.0.0.0:9865</value>
+                <value>0.0.0.0:50475</value>
         </property>
         <property>
                 <name>dfs.datanode.ipc.address</name>
-                <value>0.0.0.0:9867</value>
+                <value>0.0.0.0:8010</value>
         </property>
         <property>
                 <name>dfs.datanode.kerberos.principal</name>
-                <value>dn/_HOST@REALM.TLD</value>
+                <value>hdfs-datanode/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>dfs.datanode.keytab.file</name>
-                <value>/etc/security/keytabs/dn.service.keytab</value>
+                <value>/etc/security/keytabs/hdfs-datanode.service.keytab</value>
         </property>
         <property>
                 <name>dfs.disk.balancer.block.tolerance.percent</name>
@@ -135,7 +135,7 @@
         </property>
         <property>
                 <name>dfs.encrypt.data.transfer</name>
-                <value>False</value>
+                <value>True</value>
         </property>
         <property>
                 <name>dfs.encrypt.data.transfer.algorithm</name>
@@ -144,6 +144,10 @@
         <property>
                 <name>dfs.encrypt.data.transfer.cipher.key.bitlength</name>
                 <value>128</value>
+        </property>
+        <property>
+                <name>dfs.encrypt.data.transfer.cipher.suites</name>
+                <value>AES/CTR/NoPadding</value>
         </property>
         <property>
                 <name>dfs.encryption.key.provider.uri</name>
@@ -179,15 +183,15 @@
         </property>
         <property>
                 <name>dfs.journalnode.kerberos.internal.spnego.principal</name>
-                <value>HTTP/_HOST@REALM</value>
+                <value>HTTP/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>dfs.journalnode.kerberos.principal</name>
-                <value>jn/_HOST@REALM</value>
+                <value>hdfs-journalnode/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>dfs.journalnode.keytab.file</name>
-                <value>/etc/security/keytabs/jn.service.keytab</value>
+                <value>/etc/security/keytabs/hdfs-journalnode.service.keytab</value>
         </property>
         <property>
                 <name>dfs.journalnode.rpc-address</name>
@@ -222,16 +226,20 @@
                 <value>0.0.0.0:9870</value>
         </property>
         <property>
+                <name>dfs.namenode.inode.attributes.provider.class</name>
+                <value>org.apache.ranger.authorization.hadoop.RangerHdfsAuthorizer</value>
+        </property>
+        <property>
                 <name>dfs.namenode.kerberos.internal.spnego.principal</name>
-                <value>HTTP/_HOST@REALM</value>
+                <value>HTTP/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>dfs.namenode.kerberos.principal</name>
-                <value>nn/_HOST@REALM</value>
+                <value>hdfs-namenode/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>dfs.namenode.keytab.file</name>
-                <value>/etc/security/keytabs/nn.service.keytab</value>
+                <value>/etc/security/keytabs/hdfs-namenode.service.keytab</value>
         </property>
         <property>
                 <name>dfs.namenode.name.dir</name>
@@ -258,6 +266,10 @@
                 <value>adh3</value>
         </property>
         <property>
+                <name>dfs.permissions.ContentSummary.subAccess</name>
+                <value>True</value>
+        </property>
+        <property>
                 <name>dfs.permissions.superusergroup</name>
                 <value>hadoop</value>
         </property>
@@ -271,10 +283,10 @@
         </property>
         <property>
                 <name>dfs.web.authentication.kerberos.principal</name>
-                <value>HTTP/_HOST@REALM</value>
+                <value>HTTP/_HOST@ARENA.RU</value>
         </property>
         <property>
                 <name>ignore.secure.ports.for.testing</name>
-                <value>False</value>
+                <value>True</value>
         </property>
 </configuration>

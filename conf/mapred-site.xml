@@ -27,7 +27,7 @@
 	</property>
 	<property>
 		<name>mapreduce.jobhistory.principal</name>
-		<value>mapreduce-historyserver/_HOST@REALM</value>
+		<value>mapreduce-historyserver/_HOST@ARENA.RU</value>
 	</property>
 	<property>
 		<name>mapreduce.jobhistory.webapp.address</name>

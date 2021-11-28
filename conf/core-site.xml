@@ -14,7 +14,7 @@
 	</property>
 	<property>
 		<name>ha.zookeeper.acl</name>
-		<value></value>
+		<value>sasl:hdfs-namenode:rwcda</value>
 	</property>
 	<property>
 		<name>ha.zookeeper.quorum</name>
@@ -26,11 +26,27 @@
 	</property>
 	<property>
 		<name>hadoop.http.authentication.kerberos.principal</name>
-		<value>HTTP/_HOST@$LOCALHOST</value>
+		<value>HTTP/_HOST@ARENA.RU</value>
 	</property>
 	<property>
 		<name>hadoop.http.authentication.type</name>
-		<value>simple</value>
+		<value>kerberos</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.hive.groups</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.hive.hosts</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.HTTP.groups</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.HTTP.hosts</name>
+		<value>*</value>
 	</property>
 	<property>
 		<name>hadoop.proxyuser.httpfs.groups</name>
@@ -41,16 +57,47 @@
 		<value>*</value>
 	</property>
 	<property>
+		<name>hadoop.proxyuser.yarn.groups</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.yarn.hosts</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.zeppelin.groups</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.zeppelin.hosts</name>
+		<value>*</value>
+	</property>
+	<property>
 		<name>hadoop.rpc.protection</name>
-		<value>authentication</value>
+		<value>authentication,privacy</value>
+	</property>
+	<property>
+		<name>hadoop.security.auth_to_local</name>
+		<value>RULE:[2:$1/$2@$0](hdfs-namenode/.*@ARENA.RU)s/.*/hdfs/
+RULE:[2:$1/$2@$0](hdfs-datanode/.*@ARENA.RU)s/.*/hdfs/
+RULE:[2:$1/$2@$0](hdfs-journalnode/.*@ARENA.RU)s/.*/hdfs/
+RULE:[2:$1/$2@$0](hdfs/.*@ARENA.RU)s/.*/hdfs/
+RULE:[2:$1/$2@$0](yarn-resourcemanager/.*@ARENA.RU)s/.*/yarn/
+RULE:[2:$1/$2@$0](yarn-nodemanager/.*@ARENA.RU)s/.*/yarn/
+RULE:[2:$1/$2@$0](yarn/.*@ARENA.RU)s/.*/yarn/
+RULE:[2:$1/$2@$0](hbase-master/.*@ARENA.RU)s/.*/hbase/
+RULE:[2:$1/$2@$0](hbase-regionserver/.*@ARENA.RU)s/.*/hbase/
+RULE:[2:$1/$2@$0](mapreduce-historyserver/.*@ARENA.RU)s/.*/mapred/
+DEFAULT
+</value>
 	</property>
 	<property>
 		<name>hadoop.security.authentication</name>
-		<value>simple</value>
+		<value>kerberos</value>
 	</property>
 	<property>
 		<name>hadoop.security.authorization</name>
-		<value>False</value>
+		<value>True</value>
 	</property>
 	<property>
 		<name>hadoop.security.key.provider.path</name>

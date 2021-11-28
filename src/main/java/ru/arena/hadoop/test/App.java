@@ -1,5 +1,5 @@
 package ru.arena.hadoop.test;
-
+import org.apache.commons.io.IOUtils;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,12 +12,15 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.LocatedFileStatus;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.hdfs.client.HdfsDataOutputStream;
+import org.apache.hadoop.fs.RemoteIterator;
+import org.apache.hadoop.hdfs.DistributedFileSystem;
+import org.apache.hadoop.security.UserGroupInformation;
 import org.apache.hadoop.util.Progressable;
 
 /**
@@ -36,6 +39,38 @@ public class App {
 			System.out.println(rez);
 		}
 		fileSystem.close();
+	}
+	
+	public static void writeFileToKrbHFDS() throws IOException {
+
+        // set kerberos host and realm
+        System.setProperty("java.security.krb5.realm", "ARENA.RU");
+        System.setProperty("java.security.krb5.kdc", "192.168.33.10");
+
+        Configuration conf = new Configuration();
+
+        conf.set("hadoop.security.authentication", "kerberos");
+        conf.set("hadoop.security.authorization", "true");
+
+        conf.set("fs.defaultFS", "hdfs://192.168.2.2");
+        conf.set("fs.hdfs.impl", DistributedFileSystem.class.getName());
+
+        // hack for running locally with fake DNS records
+        // set this to true if overriding the host name in /etc/hosts
+        conf.set("dfs.client.use.datanode.hostname", "true");
+
+        // server principal
+        // the kerberos principle that the namenode is using
+        conf.set("dfs.namenode.kerberos.principal.pattern", "hdfs/*@ARENA.RU");
+        UserGroupInformation.setConfiguration(conf);
+        UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "conf/team0.keytab");
+
+        FileSystem fs = FileSystem.get(conf);
+        RemoteIterator<LocatedFileStatus> files = fs.listFiles(new Path("./"), true);
+        while(files.hasNext()) {
+            LocatedFileStatus file = files.next();
+            System.out.println(IOUtils.toString(fs.open(file.getPath())));
+        }
 	}
 
 	public static void writeFileToHDFS(Configuration conf, String dirName, String fileName) throws IOException {
@@ -77,11 +112,9 @@ public class App {
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
 		conf.addResource(new Path("conf/hdfs-site.xml"));
-//		conf.set("fs.defaultFS", "hdfs://176.118.164.173:8020");
-//		conf.set("fs.default.name", "hdfs://176.118.164.173:8020");
 //		conf.set("fs.defaultFS", "hdfs://192.168.2.2:8020");
 //		conf.set("fs.default.name", "hdfs://192.168.2.2:8020");
-		String dirName = "/tmp/testdir";
+		String dirName = "/tmp/testdir"; 
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
 		createFolderOnHDFS(conf, dirName);
