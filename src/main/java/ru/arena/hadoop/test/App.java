@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.apache.commons.io.IOUtils;
@@ -75,6 +76,18 @@ public class App {
             LocatedFileStatus file = files.next();
             System.out.println(IOUtils.toString(fs.open(file.getPath())));
         }
+        Path file = new Path("success");
+		if (fs.exists(file)) 
+			fs.delete(file, true);
+		OutputStream os = fs.create(file, new Progressable() {
+			public void progress() {
+				System.out.print(".");
+			}
+		});
+		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+		br.write(""+new Date(System.currentTimeMillis()));
+		br.close();
+		fs.close();
 	}
 
 	public static void writeFileToHDFS(Configuration conf, String dirName, String fileName) throws IOException {
