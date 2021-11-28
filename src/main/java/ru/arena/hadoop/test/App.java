@@ -77,7 +77,7 @@ public class App {
             LocatedFileStatus file = files.next();
             System.out.println(IOUtils.toString(fs.open(file.getPath())));
         }
-        Path file = new Path("success");
+        Path file = new Path("/user/team0/success");
 		if (fs.exists(file)) 
 			fs.delete(file, true);
 		OutputStream os = fs.create(file, new Progressable() {
