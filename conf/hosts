@@ -1,0 +1,26 @@
+# Your system has configured 'manage_etc_hosts' as True.
+# As a result, if you wish for changes to this file to persist
+# then you will need to either
+# a.) make changes to the master file in /etc/cloud/templates/hosts.redhat.tmpl
+# b.) change or remove the value of 'manage_etc_hosts' in
+#     /etc/cloud/cloud.cfg or cloud-config from user-data
+# 
+# The following lines are desirable for IPv4 capable hosts
+127.0.0.1 master-1 master-1
+127.0.0.1 localhost.localdomain localhost
+127.0.0.1 localhost4.localdomain4 localhost4
+
+# The following lines are desirable for IPv6 capable hosts
+::1 master-1 master-1
+::1 localhost.localdomain localhost
+::1 localhost6.localdomain6 localhost6
+
+192.168.2.10 master-0.arena.ru  master-0
+192.168.2.2 master-1.arena.ru  master-1    
+192.168.2.3 master-2.arena.ru   master-2 
+192.168.2.4 master-3.arena.ru   master-3  
+192.168.2.5 data-1.arena.ru  data-1  
+192.168.2.6 data-2.arena.ru  data-2 
+192.168.2.8 data-3.arena.ru  data-3   
+192.168.2.7 data-4.arena.ru  data-4   
+192.168.2.9 data-5.arena.ru  data-5   
