@@ -54,7 +54,7 @@ public class App {
         conf.set("hadoop.security.authentication", "kerberos");
         conf.set("hadoop.security.authorization", "true");
 
-        conf.set("fs.defaultFS", "hdfs://192.168.2.2");
+//        conf.set("fs.defaultFS", "hdfs://192.168.2.2");
         conf.set("fs.hdfs.impl", DistributedFileSystem.class.getName());
 
         // hack for running locally with fake DNS records
