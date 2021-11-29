@@ -26,7 +26,7 @@ import org.apache.hadoop.security.UserGroupInformation;
 import org.apache.hadoop.util.Progressable;
 
 /**
- * Hello world!
+ * Hello hadoop!
  *
  */
 public class App {
@@ -56,7 +56,6 @@ public class App {
         conf.set("hadoop.security.authentication", "kerberos");
         conf.set("hadoop.security.authorization", "true");
 
-//        conf.set("fs.defaultFS", "hdfs://192.168.2.2");
         conf.set("fs.hdfs.impl", DistributedFileSystem.class.getName());
 
         // hack for running locally with fake DNS records
@@ -97,7 +96,6 @@ public class App {
 		if (fileSystem.exists(file)) 
 			fileSystem.delete(file, true);
 		OutputStream os = fileSystem.create(file, new Progressable() {
-
 			public void progress() {
 				System.out.print(".");
 			}
@@ -130,23 +128,20 @@ public class App {
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
 		conf.addResource(new Path("conf/hdfs-site.xml"));
-//		conf.set("fs.defaultFS", "hdfs://192.168.2.2:8020");
-//		conf.set("fs.default.name", "hdfs://192.168.2.2:8020");
 		String dirName = "/tmp/testdir"; 
 		// Values of hosthdfs:port can be found in the core-site.xml in the
 		// fs.default.name
 		 
 		// sample work with SIMPLE authentication 
-//		createFolderOnHDFS(conf, dirName);
-//		writeFileToHDFS(conf, dirName, "test.txt");
-//		readFileFromHDFS(conf, dirName, "test.txt");
+		// createFolderOnHDFS(conf, dirName);
+		// writeFileToHDFS(conf, dirName, "test.txt");
+		// readFileFromHDFS(conf, dirName, "test.txt");
 		
 		// sample work with kerberos
 		writeFileToKrbHFDS();
 		try {
 			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
