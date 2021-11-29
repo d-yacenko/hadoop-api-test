@@ -50,8 +50,8 @@ public class App {
         System.setProperty("java.security.krb5.kdc", "192.168.2.10");
 
         Configuration conf = new Configuration();
-		conf.addResource(new Path("/usr/lib/hadoop_test/conf/core-site.xml"));
-		conf.addResource(new Path("/usr/lib/hadoop_test/conf/hdfs-site.xml"));
+		conf.addResource(new Path("conf/core-site.xml"));
+		conf.addResource(new Path("conf/hdfs-site.xml"));
 
         conf.set("hadoop.security.authentication", "kerberos");
         conf.set("hadoop.security.authorization", "true");
@@ -67,7 +67,7 @@ public class App {
         // the kerberos principle that the namenode is using
         conf.set("dfs.namenode.kerberos.principal.pattern", "hdfs-namenode/*@ARENA.RU");
         UserGroupInformation.setConfiguration(conf);
-        UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "/usr/lib/hadoop_test/conf/team0.keytab");
+        UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "conf/team0.keytab");
 
         FileSystem fs = FileSystem.get(conf);
         System.out.print("Подключились к:  ");
