@@ -128,21 +128,19 @@ public class App {
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
 		conf.addResource(new Path("conf/hdfs-site.xml"));
-		String dirName = "/tmp/testdir"; 
-		// Values of hosthdfs:port can be found in the core-site.xml in the
-		// fs.default.name
-		 
+		String dirName = "testfolder_"+(System.currentTimeMillis()%1000); 
+
 		// sample work with SIMPLE authentication 
-		// createFolderOnHDFS(conf, dirName);
-		// writeFileToHDFS(conf, dirName, "test.txt");
-		// readFileFromHDFS(conf, dirName, "test.txt");
+		 createFolderOnHDFS(conf, dirName);
+		 writeFileToHDFS(conf, dirName, "test.txt");
+		 readFileFromHDFS(conf, dirName, "test.txt");
 		
 		// sample work with kerberos
-		writeFileToKrbHFDS();
-		try {
-			TimeUnit.SECONDS.sleep(10);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		writeFileToKrbHFDS();
+//		try {
+//			TimeUnit.SECONDS.sleep(10);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -39,7 +39,7 @@
 	</property>
 	<property>
 		<name>xasecure.audit.jaas.Client.option.principal</name>
-		<value>hdfs-namenode/master-1.arena.ru@ARENA.RU</value>
+		<value>hdfs-namenode/master-2.arena.ru@ARENA.RU</value>
 	</property>
 	<property>
 		<name>xasecure.audit.jaas.Client.option.serviceName</name>

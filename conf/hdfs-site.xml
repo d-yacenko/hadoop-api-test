@@ -39,7 +39,7 @@
         </property>
         <property>
                 <name>dfs.block.access.token.enable</name>
-                <value>True</value>
+                <value>False</value>
         </property>
         <property>
                 <name>dfs.blocksize</name>
@@ -71,11 +71,11 @@
         </property>
         <property>
                 <name>dfs.data.transfer.protection</name>
-                <value>authentication,privacy</value>
+                <value></value>
         </property>
         <property>
                 <name>dfs.datanode.address</name>
-                <value>0.0.0.0:1019</value>
+                <value>0.0.0.0:9866</value>
         </property>
         <property>
                 <name>dfs.datanode.balance.max.concurrent.moves</name>
@@ -91,7 +91,7 @@
         </property>
         <property>
                 <name>dfs.datanode.http.address</name>
-                <value>0.0.0.0:1022</value>
+                <value>0.0.0.0:9864</value>
         </property>
         <property>
                 <name>dfs.datanode.https.address</name>
@@ -99,7 +99,7 @@
         </property>
         <property>
                 <name>dfs.datanode.ipc.address</name>
-                <value>0.0.0.0:8010</value>
+                <value>0.0.0.0:9867</value>
         </property>
         <property>
                 <name>dfs.datanode.kerberos.principal</name>
@@ -135,7 +135,7 @@
         </property>
         <property>
                 <name>dfs.encrypt.data.transfer</name>
-                <value>True</value>
+                <value>False</value>
         </property>
         <property>
                 <name>dfs.encrypt.data.transfer.algorithm</name>
@@ -287,6 +287,6 @@
         </property>
         <property>
                 <name>ignore.secure.ports.for.testing</name>
-                <value>True</value>
+                <value>False</value>
         </property>
 </configuration>

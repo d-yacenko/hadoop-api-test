@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<configuration>
+	<property>
+		<name>ranger.add-yarn-authorization</name>
+		<value>False</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.cache.dir</name>
+		<value>/srv/ranger/yarn/policycache</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.pollIntervalMs</name>
+		<value>30000</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.rest.client.connection.timeoutMs</name>
+		<value>120000</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.rest.client.read.timeoutMs</name>
+		<value>30000</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.rest.url</name>
+		<value>http://master-0.arena.ru:6080</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.policy.source.impl</name>
+		<value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
+	</property>
+	<property>
+		<name>ranger.plugin.yarn.service.name</name>
+		<value>adh_cluster_yarn_id_3</value>
+	</property>
+</configuration>

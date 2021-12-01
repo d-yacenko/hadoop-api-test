@@ -99,7 +99,7 @@
 	</property>
 	<property>
 		<name>yarn.nodemanager.webapp.cross-origin.enabled</name>
-		<value>True</value>
+		<value>False</value>
 	</property>
 	<property>
 		<name>yarn.nodemanager.webapp.spnego-keytab-file</name>
@@ -215,7 +215,7 @@
 	</property>
 	<property>
 		<name>yarn.resourcemanager.webapp.delegation-token-auth-filter.enabled</name>
-		<value>True</value>
+		<value>False</value>
 	</property>
 	<property>
 		<name>yarn.resourcemanager.webapp.https.address</name>
@@ -295,7 +295,7 @@
 	</property>
 	<property>
 		<name>yarn.timeline-service.client.best-effort</name>
-		<value>True</value>
+		<value>False</value>
 	</property>
 	<property>
 		<name>yarn.timeline-service.delegation.key.update-interval</name>
@@ -327,11 +327,11 @@
 	</property>
 	<property>
 		<name>yarn.timeline-service.http-authentication.simple.anonymous.allowed</name>
-		<value>False</value>
+		<value>True</value>
 	</property>
 	<property>
 		<name>yarn.timeline-service.http-authentication.type</name>
-		<value>kerberos</value>
+		<value>simple</value>
 	</property>
 	<property>
 		<name>yarn.timeline-service.http-cross-origin.enabled</name>

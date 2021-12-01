@@ -14,7 +14,7 @@
 	</property>
 	<property>
 		<name>ha.zookeeper.acl</name>
-		<value>sasl:hdfs-namenode:rwcda</value>
+		<value></value>
 	</property>
 	<property>
 		<name>ha.zookeeper.quorum</name>
@@ -30,23 +30,7 @@
 	</property>
 	<property>
 		<name>hadoop.http.authentication.type</name>
-		<value>kerberos</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.hive.groups</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.hive.hosts</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.HTTP.groups</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.HTTP.hosts</name>
-		<value>*</value>
+		<value>simple</value>
 	</property>
 	<property>
 		<name>hadoop.proxyuser.httpfs.groups</name>
@@ -57,24 +41,8 @@
 		<value>*</value>
 	</property>
 	<property>
-		<name>hadoop.proxyuser.yarn.groups</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.yarn.hosts</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.zeppelin.groups</name>
-		<value>*</value>
-	</property>
-	<property>
-		<name>hadoop.proxyuser.zeppelin.hosts</name>
-		<value>*</value>
-	</property>
-	<property>
 		<name>hadoop.rpc.protection</name>
-		<value>authentication,privacy</value>
+		<value>authentication</value>
 	</property>
 	<property>
 		<name>hadoop.security.auth_to_local</name>
@@ -93,11 +61,11 @@ DEFAULT
 	</property>
 	<property>
 		<name>hadoop.security.authentication</name>
-		<value>kerberos</value>
+		<value>simple</value>
 	</property>
 	<property>
 		<name>hadoop.security.authorization</name>
-		<value>True</value>
+		<value>False</value>
 	</property>
 	<property>
 		<name>hadoop.security.key.provider.path</name>
