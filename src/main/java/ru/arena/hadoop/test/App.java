@@ -48,26 +48,21 @@ public class App {
         // set kerberos host and realm
         System.setProperty("java.security.krb5.realm", "ARENA.RU");
         System.setProperty("java.security.krb5.kdc", "master-0.arena.ru");
-
         Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
 		conf.addResource(new Path("conf/hdfs-site.xml"));
-
         conf.set("hadoop.security.authentication", "kerberos");
         conf.set("hadoop.security.authorization", "true");
-
         conf.set("fs.hdfs.impl", DistributedFileSystem.class.getName());
 
         // hack for running locally with fake DNS records
         // set this to true if overriding the host name in /etc/hosts
         conf.set("dfs.client.use.datanode.hostname", "true");
-
         // server principal
         // the kerberos principle that the namenode is using
         conf.set("dfs.namenode.kerberos.principal.pattern", "hdfs-namenode/*@ARENA.RU");
         UserGroupInformation.setConfiguration(conf);
         UserGroupInformation.loginUserFromKeytab("team0@ARENA.RU", "conf/team0.keytab");
-
         FileSystem fs = FileSystem.get(conf);
         System.out.print("Подключились к:  ");
         System.out.println(fs.getUri());
@@ -106,7 +101,6 @@ public class App {
 		fileSystem.close();
 		System.out.println();
 	}
-
 
 	public static void readFileFromHDFS(Configuration conf, String dirName, String fileName) throws IOException {
 		System.out.print("Read test file:");
