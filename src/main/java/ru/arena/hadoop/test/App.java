@@ -122,7 +122,7 @@ public class App {
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("conf/core-site.xml"));
 		conf.addResource(new Path("conf/hdfs-site.xml"));
-		String dirName = "testfolder_"+(System.currentTimeMillis()%1000); 
+		String dirName = "/tmp/testfolder_"+(System.currentTimeMillis()%1000); 
 
 		// sample work with SIMPLE authentication 
 		 createFolderOnHDFS(conf, dirName);
